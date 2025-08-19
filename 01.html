@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国教育考试网</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #content {
+            display: none;
+            text-align: center;
+            font-size: 2em;
+            padding-top: 50px;
+            color: #333;
+        }
+        #content a {
+            color: #333;
+            text-decoration: none;
+        }
+        #content a:hover {
+            text-decoration: underline;
+        }
+        /* 小型灰色加载动画 */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3; /* 浅灰色背景 */
+            border-top: 3px solid #888; /* 灰色旋转部分 */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <div id="content"><a href="https://www.neea.edu.cn/" target="_blank">中国教育考试网</a></div>
+
+    <script>
+        // 设置100000秒（100,000,000毫秒）的延迟加载
+        setTimeout(() => {
+            const loader = document.querySelector('.loader');
+            const contentElement = document.getElementById('content');
+            
+            // 隐藏加载动画，显示内容
+            loader.style.display = 'none';
+            contentElement.style.display = 'block';
+            
+            // 添加淡入动画效果
+            contentElement.style.animation = 'fadeIn 2s';
+            document.head.innerHTML += `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(-20px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+            `;
+        }, 100000000); // 100000秒 = 100,000,000毫秒
+    </script>
+</body>
+</html>
